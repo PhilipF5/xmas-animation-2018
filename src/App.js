@@ -3,6 +3,7 @@ import logo from "./logo.svg";
 import "./App.css";
 import styled from "styled-components";
 import { Ornament } from "./components/Ornament";
+import { Star } from "./components/Star";
 import { TreeSection } from "./components/TreeSection";
 import { TreeTrunk } from "./components/TreeTrunk";
 
@@ -29,6 +30,7 @@ class App extends Component {
 	render() {
 		return (
 			<XmasTree>
+				<Star>★</Star>
 				<TreeSection className="top" />
 				<TreeSection className="middle" />
 				<TreeSection />
