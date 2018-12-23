@@ -15,13 +15,13 @@ export const Ornament = styled.div`
 
 	&[data-id="2"] {
 		background-color: red;
-		left: 250px;
+		left: 62%;
 		top: 60%;
 	}
 
 	&[data-id="3"] {
 		background-color: blue;
-		left: 150px;
+		left: 38%;
 		top: 65%;
 	}
 
@@ -57,7 +57,7 @@ export const Ornament = styled.div`
 
 	&[data-id="9"] {
 		background-color: goldenrod;
-		left: 160px;
+		left: 40%;
 		top: 75%;
 	}
 `;

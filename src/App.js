@@ -9,11 +9,10 @@ import { TreeTrunk } from "./components/TreeTrunk";
 const XmasTree = styled.div`
 	align-items: center;
 	border: 2px solid black;
-	display: flex;
+	display: inline-flex;
 	flex-direction: column;
 	height: 600px;
 	justify-content: flex-end;
-	margin: 40px;
 	position: relative;
 	width: 400px;
 `;
