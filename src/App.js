@@ -3,11 +3,21 @@ import logo from "./logo.svg";
 import "./App.css";
 import { Back, Linear, TimelineLite } from "gsap";
 import styled from "styled-components";
+import { Letter } from "./components/Letter";
 import { Light } from "./components/Light";
 import { Ornament } from "./components/Ornament";
 import { Star } from "./components/Star";
 import { TreeSection } from "./components/TreeSection";
 import { TreeTrunk } from "./components/TreeTrunk";
+
+const Sign = styled.div`
+	align-items: center;
+	display: flex;
+	justify-content: center;
+	position: absolute;
+	top: 0;
+	width: 100%;
+`;
 
 const XmasTree = styled.div`
 	align-items: center;
@@ -48,13 +58,18 @@ class App extends Component {
 			.set(".star", { opacity: 1 })
 			.from(".star", 2, { rotationX: -90, transformOrigin: "bottom center", ease: Back.easeOut })
 			.to("*", 3, { className: "+=night" })
-			.set([".light", ".star"], { className: "+=on" }, "+=1");
+			.set([".light", ".star"], { className: "+=on" }, "+=1")
+			.staggerFrom(".letter", 1, { y: -50, rotationX: -90, transformOrigin: "top center", ease: Back.easeOut }, 0.1);
 
 		for (let i = 1; i <= 19; i++) {
 			timeline.set(`.light[data-id="${i}"]`, { opacity: 1 }, "begin-lights+=" + (0.05 * i));
 		}
 
 		return timeline;
+	}
+
+	generateLetters() {
+		return Array.from("MERRYCHRISTMAS").map(letter => <Letter data-letter={letter} className="letter">{letter}</Letter>);
 	}
 
 	generateLights() {
@@ -76,6 +91,7 @@ class App extends Component {
 	render() {
 		return (
 			<XmasTree className="container">
+				<Sign>{this.generateLetters()}</Sign>
 				<Star className="star">★</Star>
 				<TreeSection className="branches top" />
 				<TreeSection className="branches middle" />
