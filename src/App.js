@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import styled from "styled-components";
+import { Light } from "./components/Light";
 import { Ornament } from "./components/Ornament";
 import { Star } from "./components/Star";
 import { TreeSection } from "./components/TreeSection";
@@ -19,6 +20,14 @@ const XmasTree = styled.div`
 `;
 
 class App extends Component {
+	generateLights() {
+		let lights = [];
+		for (let i = 1; i <= 19; i++) {
+			lights.push(<Light data-id={i} key={i} />);
+		}
+		return lights;
+	}
+
 	generateOrnaments() {
 		let ornaments = [];
 		for (let i = 1; i <= 13; i++) {
@@ -36,6 +45,7 @@ class App extends Component {
 				<TreeSection />
 				<TreeTrunk />
 				{this.generateOrnaments()}
+				{this.generateLights()}
 			</XmasTree>
 		);
 	}
