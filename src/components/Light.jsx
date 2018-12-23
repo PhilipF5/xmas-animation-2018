@@ -4,7 +4,9 @@ import randomColor from "randomcolor";
 export const Light = styled.div`
 	background-color: currentColor;
 	border-radius: 2px;
+	filter: brightness(1);
 	height: 2px;
+	opacity: 0;
 	position: absolute;
 	width: 2px;
 

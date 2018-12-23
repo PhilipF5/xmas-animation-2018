@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 export const Ornament = styled.div`
 	border-radius: 25px;
+	filter: brightness(1);
 	height: 25px;
 	position: absolute;
 	width: 25px;

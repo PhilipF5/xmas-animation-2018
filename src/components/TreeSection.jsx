@@ -7,6 +7,7 @@ export const TreeSection = styled.div`
 	border-bottom-color: green;
 	border-left: 150px solid transparent;
 	border-right: 150px solid transparent;
+	filter: brightness(1);
 	height: 0;
 	width: 0;
 
