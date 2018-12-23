@@ -60,4 +60,28 @@ export const Ornament = styled.div`
 		left: 40%;
 		top: 75%;
 	}
+
+	&[data-id="10"] {
+		background-color: blue;
+		left: 57%;
+		top: 76%;
+	}
+
+	&[data-id="11"] {
+		background-color: silver;
+		left: 27%;
+		top: 80%;
+	}
+
+	&[data-id="12"] {
+		background-color: red;
+		left: 47%;
+		top: 83%;
+	}
+
+	&[data-id="13"] {
+		background-color: goldenrod;
+		left: 68%;
+		top: 81%;
+	}
 `;

@@ -18,6 +18,14 @@ const XmasTree = styled.div`
 `;
 
 class App extends Component {
+	generateOrnaments() {
+		let ornaments = [];
+		for (let i = 1; i <= 13; i++) {
+			ornaments.push(<Ornament data-id={i} key={i} />);
+		}
+		return ornaments;
+	}
+
 	render() {
 		return (
 			<XmasTree>
@@ -25,15 +33,7 @@ class App extends Component {
 				<TreeSection className="middle" />
 				<TreeSection />
 				<TreeTrunk />
-				<Ornament data-id="1" />
-				<Ornament data-id="2" />
-				<Ornament data-id="3" />
-				<Ornament data-id="4" />
-				<Ornament data-id="5" />
-				<Ornament data-id="6" />
-				<Ornament data-id="7" />
-				<Ornament data-id="8" />
-				<Ornament data-id="9" />
+				{this.generateOrnaments()}
 			</XmasTree>
 		);
 	}
