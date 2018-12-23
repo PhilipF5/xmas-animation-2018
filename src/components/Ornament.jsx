@@ -7,6 +7,10 @@ export const Ornament = styled.div`
 	position: absolute;
 	width: 25px;
 
+	&.night {
+		filter: brightness(0.5);
+	}
+
 	&[data-id="1"] {
 		background-color: red;
 		left: 45%;

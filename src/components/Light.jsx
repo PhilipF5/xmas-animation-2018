@@ -8,6 +8,10 @@ export const Light = styled.div`
 	position: absolute;
 	width: 2px;
 
+	&.night {
+		filter: brightness(0.5);
+	}
+
 	&[data-id="1"] {
 		color: ${generateColor()};
 		left: 22%;

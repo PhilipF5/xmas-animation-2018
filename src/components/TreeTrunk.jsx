@@ -5,4 +5,8 @@ export const TreeTrunk = styled.div`
 	background-color: saddlebrown;
 	height: 75px;
 	width: 100px;
+
+	&.night {
+		filter: brightness(0.5);
+	}
 `;

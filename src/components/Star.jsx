@@ -7,4 +7,8 @@ export const Star = styled.div`
 	position: relative;
 	transform: translateY(195px);
 	z-index: 10;
+
+	&.night {
+		filter: brightness(0.5);
+	}
 `;
