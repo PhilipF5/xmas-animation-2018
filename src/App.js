@@ -18,6 +18,7 @@ const XmasTree = styled.div`
 	height: 600px;
 	justify-content: flex-end;
 	overflow: hidden;
+	perspective: 500px;
 	position: relative;
 	width: 400px;
 
@@ -44,7 +45,8 @@ class App extends Component {
 			.addLabel("begin-lights", "branches-top+=2")
 			.addLabel("begin-ornaments", "begin-lights+=1")
 			.staggerFrom(".ornament", 0.5, { scale: 0, ease: Back.easeOut }, 0.1, "begin-ornaments")
-			.from(".star", 1, { rotationX: -90, transformOrigin: "bottom center", ease: Back.easeOut })
+			.set(".star", { opacity: 1 })
+			.from(".star", 2, { rotationX: -90, transformOrigin: "bottom center", ease: Back.easeOut })
 			.to("*", 3, { className: "+=night" })
 			.set([".light", ".star"], { className: "+=on" }, "+=1");
 

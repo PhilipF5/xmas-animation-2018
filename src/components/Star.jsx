@@ -5,7 +5,7 @@ export const Star = styled.div`
 	color: gold;
 	filter: brightness(1);
 	font-size: 42px;
-	perspective: 250px;
+	opacity: 0;
 	position: relative;
 	transform: translateY(195px);
 	z-index: 10;
