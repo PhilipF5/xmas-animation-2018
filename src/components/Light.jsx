@@ -10,6 +10,11 @@ export const Light = styled.div`
 
 	&.night {
 		filter: brightness(0.5);
+
+		&.on {
+			filter: contrast(200%);
+			box-shadow: 0 0 15px 6px currentColor;
+		}
 	}
 
 	&[data-id="1"] {

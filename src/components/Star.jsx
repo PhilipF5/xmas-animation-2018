@@ -10,5 +10,10 @@ export const Star = styled.div`
 
 	&.night {
 		filter: brightness(0.5);
+
+		&.on {
+			filter: none;
+			text-shadow: 0 0 0.5em currentColor;
+		}
 	}
 `;
