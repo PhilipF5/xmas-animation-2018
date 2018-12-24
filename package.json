@@ -1,6 +1,9 @@
 {
 	"name": "xmas-animation-2018",
 	"version": "0.1.0",
+	"author": "Philip Fulgham (https://www.philipfulgham.com)",
+	"repository": "github:philipf5/xmas-animation-2018",
+	"license": "MIT",
 	"private": true,
 	"dependencies": {
 		"babel-polyfill": "^6.26.0",
