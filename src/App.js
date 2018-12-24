@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import { Back, Linear, TimelineLite } from "gsap";
+import { Back, Linear, Power4, TimelineLite } from "gsap";
 import styled from "styled-components";
 
 import { Letter } from "./components/Letter";
@@ -85,28 +85,28 @@ class App extends Component {
 	buildTimeline() {
 		let timeline = new TimelineLite({ paused: true })
 			.add(() => (this.playMusic()))
-			.from(".trunk", 1, { y: 200, ease: Linear.easeInOut })
+			.from(".trunk", 1, { y: 200, ease: Linear.easeInOut, force3D: true })
 			.addLabel(".branches.bottom", "-=0.25")
-			.from(".branches.bottom", 1, { y: 300, ease: Linear.easeInOut }, "branches-bottom")
-			.from(".branches.bottom", 0.5, { scaleX: 0.1, ease: Linear.easeInOut }, "branches-bottom+=1.5")
+			.from(".branches.bottom", 1, { y: 300, ease: Linear.easeInOut, force3D: true }, "branches-bottom")
+			.from(".branches.bottom", 0.5, { scaleX: 0.1, ease: Linear.easeInOut, force3D: true }, "branches-bottom+=1.5")
 			.addLabel("branches-middle", "branches-bottom+=0.25")
-			.from(".branches.middle", 1, { y: 350, ease: Linear.easeInOut }, "branches-middle")
-			.from(".branches.middle", 0.5, { scaleX: 0.1, ease: Linear.easeInOut }, "branches-middle+=1.5")
+			.from(".branches.middle", 1, { y: 350, ease: Linear.easeInOut, force3D: true }, "branches-middle")
+			.from(".branches.middle", 0.5, { scaleX: 0.1, ease: Linear.easeInOut, force3D: true }, "branches-middle+=1.5")
 			.addLabel("branches-top", "branches-middle+=0.25")
-			.from(".branches.top", 1, { y: 500, ease: Linear.easeInOut }, "branches-top")
-			.from(".branches.top", 0.5, { scaleX: 0.1, ease: Linear.easeInOut }, "branches-top+=1.5")
+			.from(".branches.top", 1, { y: 500, ease: Linear.easeInOut, force3D: true }, "branches-top")
+			.from(".branches.top", 0.5, { scaleX: 0.1, ease: Linear.easeInOut, force3D: true }, "branches-top+=1.5")
 			.addLabel("begin-lights", "branches-top+=2")
 			.addLabel("begin-ornaments", "begin-lights+=1")
-			.staggerFrom(".ornament", 0.5, { scale: 0, ease: Back.easeOut }, 0.1, "begin-ornaments")
+			.staggerFrom(".ornament", 0.5, { scale: 0, ease: Back.easeOut, force3D: true }, 0.1, "begin-ornaments")
 			.set(".star", { opacity: 1 })
-			.from(".star", 2, { rotationX: -90, transformOrigin: "bottom center", ease: Back.easeOut })
+			.from(".star", 2, { rotationX: -90, transformOrigin: "bottom center", ease: Power4.easeOut, force3D: true })
 			.to("*", 3, { className: "+=night" }, "-=1")
 			.add(() => (this.playSnap()), "+=1")
 			.set([".light", ".star"], { className: "+=on" })
 			.staggerFrom(
 				".letter",
 				1,
-				{ y: -50, rotationX: -90, transformOrigin: "top center", ease: Back.easeOut },
+				{ y: -50, rotationX: -90, transformOrigin: "top center", ease: Back.easeOut, force3D: true },
 				0.1,
 				"+=0.5"
 			);
@@ -160,12 +160,10 @@ class App extends Component {
 	}
 
 	playAnimation() {
-		this.timeline.progress(0);
-		for (let audio of [this.audioMusic1, this.audioMusic2, this.audioSnap]) {
-			audio.pause();
-			audio.currentTime = 0;
+		if (!this.timeline.isActive()) {
+			this.timeline.progress(0);
+			this.timeline.play();
 		}
-		this.timeline.play();
 	}
 
 	playMusic() {
