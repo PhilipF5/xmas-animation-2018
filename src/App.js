@@ -76,6 +76,9 @@ const XmasTree = styled.div`
 `;
 
 class App extends Component {
+	audioMusic1;
+	audioMusic2;
+	audioSnap;
 	buttonText = "Play";
 	timeline;
 
@@ -112,7 +115,7 @@ class App extends Component {
 			timeline.set(`.light[data-id="${i}"]`, { opacity: 1 }, "begin-lights+=" + 0.05 * i);
 		}
 
-		timeline.timeScale(0.85);
+		timeline.timeScale(0.85).delay(1);
 		return timeline;
 	}
 
@@ -140,26 +143,38 @@ class App extends Component {
 		return ornaments;
 	}
 
+	initSound(file) {
+		let audio = new Audio(file);
+		audio.volume = 0.05;
+		let startAudio = () => {
+			audio.play();
+			document.removeEventListener("click", startAudio, false);
+		}
+		let pauseAudio = () => {
+			audio.pause();
+			audio.removeEventListener("play", pauseAudio, false);
+		}
+		audio.addEventListener("play", pauseAudio, false);
+		document.addEventListener("click", startAudio, false);
+		return audio;
+	}
+
 	playAnimation() {
 		this.timeline.progress(0);
+		for (let audio of [this.audioMusic1, this.audioMusic2, this.audioSnap]) {
+			audio.pause();
+			audio.currentTime = 0;
+		}
 		this.timeline.play();
 	}
 
 	playMusic() {
-		this.playSound("o-tannenbaum.m4a");
-		setTimeout(() => this.playSound("o-tannenbaum.m4a"), 9000);
+		this.audioMusic1.play();
+		setTimeout(() => this.audioMusic2.play(), 9000);
 	}
 
 	playSnap() {
-		this.playSound("snap.m4a");
-	}
-
-	playSound(file) {
-		let audio = new Audio();
-		audio.src = file;
-		audio.volume = 0.5;
-		audio.play();
-		return audio;
+		this.audioSnap.play();
 	}
 
 	render() {
@@ -189,6 +204,9 @@ class App extends Component {
 	}
 
 	componentDidMount() {
+		this.audioMusic1 = this.initSound("o-tannenbaum.m4a");
+		this.audioMusic2 = this.initSound("o-tannenbaum.m4a");
+		this.audioSnap = this.initSound("snap.m4a");
 		this.timeline = this.buildTimeline();
 	}
 }
