@@ -202,9 +202,9 @@ class App extends Component {
 	}
 
 	componentDidMount() {
-		this.audioMusic1 = this.initSound("o-tannenbaum.m4a");
-		this.audioMusic2 = this.initSound("o-tannenbaum.m4a");
-		this.audioSnap = this.initSound("snap.m4a");
+		this.audioMusic1 = this.initSound("o-tannenbaum.mp3");
+		this.audioMusic2 = this.initSound("o-tannenbaum.mp3");
+		this.audioSnap = this.initSound("snap.mp3");
 		this.timeline = this.buildTimeline();
 	}
 }
