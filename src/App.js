@@ -81,6 +81,7 @@ class App extends Component {
 
 	buildTimeline() {
 		let timeline = new TimelineLite({ paused: true })
+			.add(() => (this.playMusic()))
 			.from(".trunk", 1, { y: 200, ease: Linear.easeInOut })
 			.addLabel(".branches.bottom", "-=0.25")
 			.from(".branches.bottom", 1, { y: 300, ease: Linear.easeInOut }, "branches-bottom")
@@ -97,7 +98,8 @@ class App extends Component {
 			.set(".star", { opacity: 1 })
 			.from(".star", 2, { rotationX: -90, transformOrigin: "bottom center", ease: Back.easeOut })
 			.to("*", 3, { className: "+=night" }, "-=1")
-			.set([".light", ".star"], { className: "+=on" }, "+=1")
+			.add(() => (this.playSnap()), "+=1")
+			.set([".light", ".star"], { className: "+=on" })
 			.staggerFrom(
 				".letter",
 				1,
@@ -110,6 +112,7 @@ class App extends Component {
 			timeline.set(`.light[data-id="${i}"]`, { opacity: 1 }, "begin-lights+=" + 0.05 * i);
 		}
 
+		timeline.timeScale(0.85);
 		return timeline;
 	}
 
@@ -140,6 +143,23 @@ class App extends Component {
 	playAnimation() {
 		this.timeline.progress(0);
 		this.timeline.play();
+	}
+
+	playMusic() {
+		this.playSound("o-tannenbaum.m4a");
+		setTimeout(() => this.playSound("o-tannenbaum.m4a"), 9000);
+	}
+
+	playSnap() {
+		this.playSound("snap.m4a");
+	}
+
+	playSound(file) {
+		let audio = new Audio();
+		audio.src = file;
+		audio.volume = 0.5;
+		audio.play();
+		return audio;
 	}
 
 	render() {
