@@ -1,5 +1,5 @@
-import styled from "styled-components";
 import randomColor from "randomcolor";
+import styled from "styled-components";
 
 export const Light = styled.div`
 	background-color: currentColor;

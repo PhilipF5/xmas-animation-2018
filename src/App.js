@@ -1,14 +1,16 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
-import "./App.css";
+
 import { Back, Linear, TimelineLite } from "gsap";
 import styled from "styled-components";
+
 import { Letter } from "./components/Letter";
 import { Light } from "./components/Light";
 import { Ornament } from "./components/Ornament";
 import { Star } from "./components/Star";
 import { TreeSection } from "./components/TreeSection";
 import { TreeTrunk } from "./components/TreeTrunk";
+
+import "./App.css";
 
 const Container = styled.div`
 	align-items: center;
