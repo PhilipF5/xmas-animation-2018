@@ -97,7 +97,7 @@ class App extends Component {
 			.from(".branches.top", 0.5, { scaleX: 0.1, ease: Linear.easeInOut, force3D: true }, "branches-top+=1.5")
 			.addLabel("begin-lights", "branches-top+=2")
 			.addLabel("begin-ornaments", "begin-lights+=1")
-			.staggerFrom(".ornament", 0.5, { scale: 0, ease: Back.easeOut, force3D: true }, 0.1, "begin-ornaments")
+			.staggerFrom(".ornament", 0.5, { scale: 0, ease: Back.easeOut }, 0.1, "begin-ornaments")
 			.set(".star", { opacity: 1 })
 			.from(".star", 2, { rotationX: -90, transformOrigin: "bottom center", ease: Power4.easeOut, force3D: true })
 			.to("*", 3, { className: "+=night" }, "-=1")
