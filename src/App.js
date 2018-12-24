@@ -120,8 +120,8 @@ class App extends Component {
 	}
 
 	generateLetters() {
-		return Array.from("MERRYCHRISTMAS").map(letter => (
-			<Letter data-letter={letter} className="letter">
+		return Array.from("MERRYCHRISTMAS").map((letter, index) => (
+			<Letter data-letter={letter} key={index} className="letter">
 				{letter}
 			</Letter>
 		));
@@ -191,7 +191,7 @@ class App extends Component {
 				<Controls>
 					<PlayButton onClick={() => this.playAnimation()}>{this.buttonText}</PlayButton>
 					<Details>
-						<div className="author">👨‍💻 by Philip Fulgham</div>
+						<div className="author"><span role="img" aria-label="Developed">👨‍💻</span> by Philip Fulgham</div>
 						<div className="source-link">
 							<a href="https://github.com/philipf5/xmas-animation-2018">View Source on GitHub</a>
 						</div>
