@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 
+import 'babel-polyfill';
 import { Back, Linear, Power4, TimelineLite } from "gsap";
+import 'react-app-polyfill/ie11';
 import styled from "styled-components";
 
 import { Letter } from "./components/Letter";
@@ -52,6 +54,7 @@ const Sign = styled.div`
 	align-items: center;
 	display: flex;
 	justify-content: center;
+	left: 0;
 	position: absolute;
 	top: 0;
 	width: 100%;
