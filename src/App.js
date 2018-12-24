@@ -98,17 +98,27 @@ class App extends Component {
 			.from(".star", 2, { rotationX: -90, transformOrigin: "bottom center", ease: Back.easeOut })
 			.to("*", 3, { className: "+=night" }, "-=1")
 			.set([".light", ".star"], { className: "+=on" }, "+=1")
-			.staggerFrom(".letter", 1, { y: -50, rotationX: -90, transformOrigin: "top center", ease: Back.easeOut }, 0.1, "+=0.5");
+			.staggerFrom(
+				".letter",
+				1,
+				{ y: -50, rotationX: -90, transformOrigin: "top center", ease: Back.easeOut },
+				0.1,
+				"+=0.5"
+			);
 
 		for (let i = 1; i <= 19; i++) {
-			timeline.set(`.light[data-id="${i}"]`, { opacity: 1 }, "begin-lights+=" + (0.05 * i));
+			timeline.set(`.light[data-id="${i}"]`, { opacity: 1 }, "begin-lights+=" + 0.05 * i);
 		}
 
 		return timeline;
 	}
 
 	generateLetters() {
-		return Array.from("MERRYCHRISTMAS").map(letter => <Letter data-letter={letter} className="letter">{letter}</Letter>);
+		return Array.from("MERRYCHRISTMAS").map(letter => (
+			<Letter data-letter={letter} className="letter">
+				{letter}
+			</Letter>
+		));
 	}
 
 	generateLights() {
